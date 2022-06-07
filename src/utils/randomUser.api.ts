@@ -16,7 +16,7 @@ export async function getRandomUser() {
 
 export async function getRandomUsers() {
     const queryParams = new URLSearchParams({
-        results: "12",
+        results: "10",
         exc: "login",
     });
     const newUrl = new URL(`${RANDOM_USER_URL}?${queryParams}`);
