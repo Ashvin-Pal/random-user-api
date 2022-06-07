@@ -7,7 +7,7 @@ const StyledContainer = styled.div`
     display: flex;
     flex: 1;
     justify-content: center;
-    background-color: var(--color-primary);
+    background: var(--color-black);
     color: var(--color-white);
 `;
 
@@ -18,7 +18,6 @@ const StyledNavbar = styled.nav`
     justify-content: space-between;
     max-width: var(--max-content-width);
     padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--color-primary);
     color: var(--color-white);
 `;
 

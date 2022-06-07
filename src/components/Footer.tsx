@@ -5,8 +5,7 @@ const StyledFooterContainer = styled.div`
     grid-area: footer;
     display: flex;
     justify-content: center;
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background: var(--color-black);
 `;
 
 const StyledFooter = styled.footer`
