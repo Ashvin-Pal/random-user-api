@@ -1,0 +1,40 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-white: #fff;
+    --color-black: rgb(68, 68, 68);
+    --color-primary: rgb(125, 76, 219);
+    --color-secondary: rgb(237, 237, 237);
+    --color-tertiary: #c5c1c0;
+
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 1rem;
+
+    --max-content-width: 1200px;
+
+    --navbar-height: 5rem;
+    --footer-height: 5rem;
+}
