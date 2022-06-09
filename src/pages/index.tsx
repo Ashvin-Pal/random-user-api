@@ -1,11 +1,21 @@
 import type { NextPage } from "next";
+import { useCallback, useState } from "react";
 import Head from "next/head";
-import { GridGeneral } from "../components/grid";
-import { Heading1, Heading5 } from "../components/typography";
-import { UserList } from "../components/UserList";
-import { getRandomUser, getRandomUsers } from "../utils";
+import type { User } from "../../types";
+import { getRandomUsers, mapUserToCardProps, uuid } from "../utils";
+import { GridGeneral, GridHome, Heading2, UserAvatarList, Card, Badge } from "../components";
 
-const Home: NextPage = ({ users }: any) => {
+const Home: NextPage<{ users: User[] }> = ({ users }) => {
+    const [currentUser, setUser] = useState<User>(users?.[0] || null);
+
+    const handleClick = useCallback(
+        (userId: string) => {
+            const user = users.find(({ id: { value } }) => value === userId);
+            if (user) setUser(user);
+        },
+        [users]
+    );
+
     return (
         <>
             <Head>
@@ -14,21 +24,43 @@ const Home: NextPage = ({ users }: any) => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <GridGeneral>
-                <Heading1 color="--color-black">Yo grids</Heading1>
-                <UserList users={users} />
+                <GridHome
+                    topContent={
+                        <Badge>
+                            <Heading2>Select a user</Heading2>
+                        </Badge>
+                    }
+                    middleContent={
+                        <UserAvatarList
+                            users={users}
+                            currentUser={currentUser}
+                            handleClick={handleClick}
+                        />
+                    }
+                    bottomContent={currentUser && <Card {...mapUserToCardProps(currentUser)} />}
+                />
             </GridGeneral>
         </>
     );
 };
 
 export async function getStaticProps() {
-    const { data, res } = await getRandomUsers();
+    const {
+        data: { results = [] },
+        res,
+    } = await getRandomUsers();
 
     if (!res.ok) {
+        /* TODO:  Log error to error reporting service */
         throw new Error(`Failed to fetch user, received status ${res.status}`);
     }
 
-    return { props: { users: data }, revalidate: 20 };
+    /* The api does not return unique ids for now. So we generate unique ids for the users */
+    if (results.length > 0) {
+        results.forEach((user) => (user.id.value = uuid()));
+    }
+
+    return { props: { users: results }, revalidate: 20 };
 }
 
 export default Home;
