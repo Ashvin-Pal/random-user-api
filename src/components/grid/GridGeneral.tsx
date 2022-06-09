@@ -3,6 +3,7 @@ import { Footer } from "../Footer";
 import { Navbar } from "../Navbar";
 
 const GridLayout = styled.div`
+    background: var(--color-white);
     height: 100vh;
     display: grid;
     margin: 0;
@@ -19,9 +20,8 @@ const GridLayout = styled.div`
 const Main = styled.main`
     grid-area: main;
     display: flex;
-    flex: 1;
     flex-direction: column;
-    background: var(--color-secondary);
+    flex-grow: 1;
 `;
 
 export function GridGeneral({ children }: { children: React.ReactNode }) {
