@@ -5,7 +5,7 @@ const StyledFooterContainer = styled.div`
     grid-area: footer;
     display: flex;
     justify-content: center;
-    background: var(--color-black);
+    background: var(--color-footer);
 `;
 
 const StyledFooter = styled.footer`
@@ -21,9 +21,9 @@ const StyledFooter = styled.footer`
 export function Footer() {
     return (
         <StyledFooterContainer>
-            <footer>
+            <StyledFooter>
                 <Heading5 weight="400">User API &copy; 2022</Heading5>
-            </footer>
+            </StyledFooter>
         </StyledFooterContainer>
     );
 }
