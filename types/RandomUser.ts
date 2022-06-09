@@ -15,14 +15,19 @@ export interface User {
     name: Name;
     location: Location;
     email: string;
-    login: Login;
-    dob: Dob;
-    registered: Dob;
-    phone: string;
-    cell: string;
     id: ID;
     picture: Picture;
-    nat: string;
+    dob: Dob;
+    /* Not using this value for now, enable it in the api call if needed */
+    // login: Login;
+    /* Not using this value for now, enable it in the api call if needed */
+    // registered: Dob;
+    /* Not using this value for now, enable it in the api call if needed */
+    // phone: string;
+    /* Not using this value for now, enable it in the api call if needed */
+    // cell: string;
+    /* Not using this value for now, enable it in the api call if needed */
+    // nat: string;
 }
 
 interface Dob {
@@ -40,7 +45,7 @@ interface Location {
     city: string;
     state: string;
     country: string;
-    postcode: number;
+    postcode: number | string;
     coordinates: Coordinates;
     timezone: Timezone;
 }
@@ -60,15 +65,15 @@ interface Timezone {
     description: string;
 }
 
-interface Login {
-    uuid: string;
-    username: string;
-    password: string;
-    salt: string;
-    md5: string;
-    sha1: string;
-    sha256: string;
-}
+// interface Login {
+//     uuid: string;
+//     username: string;
+//     password: string;
+//     salt: string;
+//     md5: string;
+//     sha1: string;
+//     sha256: string;
+// }
 
 interface Name {
     title: string;
