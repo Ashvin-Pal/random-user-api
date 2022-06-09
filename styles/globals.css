@@ -2,7 +2,10 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: "Montserrat Alternates", sans-serif;
+    min-width: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 a {
@@ -17,12 +20,6 @@ a {
 }
 
 :root {
-    --color-white: #fff;
-    --color-black: rgb(68, 68, 68);
-    --color-primary: rgb(125, 76, 219);
-    --color-secondary: rgb(237, 237, 237);
-    --color-tertiary: #c5c1c0;
-
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
@@ -37,4 +34,38 @@ a {
 
     --navbar-height: 5rem;
     --footer-height: 5rem;
+}
+
+body[data-theme="light"] {
+    --color-white: #f4f4f4;
+    --color-black: #000000;
+    --color-primary: #444444;
+    --color-secondary: #a2a2a2;
+    --color-header: var(--color-black);
+    --color-footer: var(--color-black);
+    --box-shadow: 3px 3px 6px #bebebe, -3px -3px 6px #ffffff;
+    --background: linear-gradient(145deg, #ffffff, #dcdcdc);
+}
+
+body[data-theme="dark"] {
+    --color-white: #1a1b1f;
+    --color-black: #8a8a8a;
+    --color-primary: #444444;
+    --color-secondary: #8a8a8a;
+    --color-header: #000000;
+    --color-footer: var(--color-header);
+    --box-shadow: 3px 3px 6px #101114, -3px -3px 6px #24252a;
+    --background: linear-gradient(145deg, #1c1d21, #17181c);
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
 }
