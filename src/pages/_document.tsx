@@ -2,16 +2,15 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
-    //@ts-ignore
-    static async getInitialProps(ctx) {
+    static async getInitialProps(ctx: any) {
         const sheet = new ServerStyleSheet();
         const originalRenderPage = ctx.renderPage;
 
         try {
             ctx.renderPage = () =>
                 originalRenderPage({
-                    //@ts-ignore
-                    enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+                    enhanceApp: (App: any) => (props: any) =>
+                        sheet.collectStyles(<App {...props} />),
                 });
 
             const initialProps = await Document.getInitialProps(ctx);
@@ -27,15 +26,8 @@ class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <Head>
-                    <link rel="preconnect" href="https://fonts.googleapis.com" />
-                    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap"
-                        rel="stylesheet"
-                    />
-                </Head>
-                <body>
+                <Head></Head>
+                <body data-theme="light">
                     <Main />
                     <NextScript />
                 </body>
